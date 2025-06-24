@@ -199,4 +199,31 @@
 
     cabecera.style.background = (hora >= 18 || hora < 6)
       ? "#253857"
-      : "#ffed9f"
+      : "#ffed9f";
+
+    textoTitulo.style.color = (hora >= 18 || hora < 6)
+      ? "#ffdd99"
+      : "#e68a00";
+
+    caja.style.background = (hora >= 18 || hora < 6)
+      ? "#2e415f"
+      : "#fffbe6";
+
+    footer.style.color = (hora >= 18 || hora < 6)
+      ? "#aaa"
+      : "#888";
+
+    decoracion.classList.add(hora >= 18 || hora < 6 ? "estrellas" : "nubes");
+
+    if (hora < 18 && hora >= 6) {
+      const nube1 = document.createElement("div");
+      const nube2 = document.createElement("div");
+      nube1.classList.add("nube", "nube1");
+      nube2.classList.add("nube", "nube2");
+      decoracion.appendChild(nube1);
+      decoracion.appendChild(nube2);
+    }
+  </script>
+
+</body>
+</html>
