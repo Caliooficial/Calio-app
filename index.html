@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Calio - Tu Asistente Emocional</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       margin: 0;
@@ -29,6 +29,16 @@
     @keyframes latido {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
+    }
+    img {
+      max-width: 200px;
+      margin: 1rem auto;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    img:hover {
+      transform: scale(1.05);
     }
     .descripcion {
       max-width: 600px;
@@ -156,6 +166,8 @@
     <p>Tu Asistente Emocional</p>
   </header>
 
+  <img id="calio-img" src="calio.png" alt="Imagen de Calio">
+
   <div class="descripcion" id="descripcion-box">
     <p><strong>Calio</strong> es un asistente emocional hecho con amor pastel 💛.</p>
     <p>Te acompaña con palabras suaves y una voz cálida cuando más lo necesitas.</p>
@@ -177,31 +189,14 @@
     const footer = document.querySelector("footer");
     const decoracion = document.getElementById("decoracion");
 
-    if (hora >= 18 || hora < 6) {
-      cuerpo.style.background = "#1d2d44";
-      cuerpo.style.color = "#e0e0e0";
-      cabecera.style.background = "#253857";
-      textoTitulo.style.color = "#ffdd99";
-      caja.style.background = "#2e415f";
-      footer.style.color = "#aaa";
-      decoracion.classList.add("estrellas");
-    } else {
-      cuerpo.style.background = "linear-gradient(to bottom, #fff7dd, #ffe6f7)";
-      cuerpo.style.color = "#444";
-      cabecera.style.background = "#ffed9f";
-      textoTitulo.style.color = "#e68a00";
-      caja.style.background = "#fffbe6";
-      footer.style.color = "#888";
-      decoracion.classList.add("nubes");
+    cuerpo.style.background = (hora >= 18 || hora < 6)
+      ? "#1d2d44"
+      : "linear-gradient(to bottom, #fff7dd, #ffe6f7)";
 
-      const nube1 = document.createElement("div");
-      const nube2 = document.createElement("div");
-      nube1.classList.add("nube", "nube1");
-      nube2.classList.add("nube", "nube2");
-      decoracion.appendChild(nube1);
-      decoracion.appendChild(nube2);
-    }
-  </script>
+    cuerpo.style.color = (hora >= 18 || hora < 6)
+      ? "#e0e0e0"
+      : "#444";
 
-</body>
-</html>
+    cabecera.style.background = (hora >= 18 || hora < 6)
+      ? "#253857"
+      : "#ffed9f"
