@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calio - Tu Asistente Emocional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: background 0.5s, color 0.5s;
+    }
+    header {
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.5s;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      transition: color 0.5s;
+      animation: latido 3s infinite ease-in-out;
+    }
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .descripcion {
+      max-width: 600px;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin: 1rem;
+      transition: background 0.5s;
+      border: 2px dashed #ffd580;
+      background-image: linear-gradient(to bottom right, #fffbe6, #fff0f5);
+    }
+    .boton-descarga {
+      display: inline-block;
+      background: #ffc85c;
+      color: #000;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      transition: background 0.3s;
+    }
+    .boton-descarga:hover {
+      background: #f4b840;
+    }
+    footer {
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-bottom: 1rem;
+      transition: color 0.5s;
+    }
+
+    #decoracion {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .estrellas {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      box-shadow:
+        20px 30px white,
+        50px 80px white,
+        90px 150px white,
+        130px 100px white,
+        170px 200px white,
+        200px 60px white,
+        300px 120px white,
+        400px 180px white;
+      animation: parpadeo 2s infinite alternate;
+    }
+
+    @keyframes parpadeo {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .nubes {
+      background: transparent;
+    }
+
+    .nube {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: moverNube 20s linear infinite;
+    }
+
+    .nube::before,
+    .nube::after {
+      content: '';
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .nube::before {
+      width: 60px;
+      height: 60px;
+      top: -20px;
+      left: 30px;
+    }
+
+    .nube::after {
+      width: 80px;
+      height: 80px;
+      top: 0;
+      left: 60px;
+    }
+
+    .nube1 {
+      width: 100px;
+      height: 60px;
+      top: 50px;
+      left: 20px;
+    }
+
+    .nube2 {
+      width: 120px;
+      height: 70px;
+      top: 120px;
+      left: 200px;
+      animation-delay: 5s;
+    }
+
+    @keyframes moverNube {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="decoracion"></div>
+
+  <header>
+    <h1>Calio</h1>
+    <p>Tu Asistente Emocional</p>
+  </header>
+
+  <div class="descripcion" id="descripcion-box">
+    <p><strong>Calio</strong> es un asistente emocional hecho con amor pastel 💛.</p>
+    <p>Te acompaña con palabras suaves y una voz cálida cuando más lo necesitas.</p>
+    <p>Descansa, respira, y deja que Calio te arrope con palabras tiernas.</p>
+
+    <a class="boton-descarga" href="Calio.apk" download>📥 Descargar la app</a>
+  </div>
+
+  <footer>
+    Hecho con ternura por DAM · © 2025 Calio Project
+  </footer>
+
+  <script>
+    const hora = new Date().getHours();
+    const cuerpo = document.body;
+    const cabecera = document.querySelector("header");
+    const textoTitulo = document.querySelector("header h1");
+    const caja = document.getElementById("descripcion-box");
+    const footer = document.querySelector("footer");
+    const decoracion = document.getElementById("decoracion");
+
+    if (hora >= 18 || hora < 6) {
+      cuerpo.style.background = "#1d2d44";
+      cuerpo.style.color = "#e0e0e0";
+      cabecera.style.background = "#253857";
+      textoTitulo.style.color = "#ffdd99";
+      caja.style.background = "#2e415f";
+      footer.style.color = "#aaa";
+      decoracion.classList.add("estrellas");
+    } else {
+      cuerpo.style.background = "linear-gradient(to bottom, #fff7dd, #ffe6f7)";
+      cuerpo.style.color = "#444";
+      cabecera.style.background = "#ffed9f";
+      textoTitulo.style.color = "#e68a00";
+      caja.style.background = "#fffbe6";
+      footer.style.color = "#888";
+      decoracion.classList.add("nubes");
+
+      const nube1 = document.createElement("div");
+      const nube2 = document.createElement("div");
+      nube1.classList.add("nube", "nube1");
+      nube2.classList.add("nube", "nube2");
+      decoracion.appendChild(nube1);
+      decoracion.appendChild(nube2);
+    }
+  </script>
+
+</body>
+</html>
